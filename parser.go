@@ -192,9 +192,10 @@ func parseApkIconAndLabel(name string) (image.Image, string, error) {
 	}
 	defer pkg.Close()
 
-	icon, _ := pkg.Icon(nil)
+	icon, err2 := pkg.Icon(nil)
+
 	if icon == nil {
-		return nil, "", ErrNoIcon
+		return nil, "", err2
 	}
 
 	label, _ := pkg.Label(nil)
