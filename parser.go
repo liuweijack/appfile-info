@@ -18,8 +18,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/follyxing/go-plist"
 	"github.com/andrianbdn/iospng"
+	"github.com/follyxing/go-plist"
 	"github.com/fullsailor/pkcs7"
 	"github.com/shogo82148/androidbinary"
 	"github.com/shogo82148/androidbinary/apk"
@@ -192,7 +192,9 @@ func parseApkIconAndLabel(name string) (image.Image, string, error) {
 	}
 	defer pkg.Close()
 
-	icon, err2 := pkg.Icon(nil)
+	icon, err2 := pkg.Icon(&androidbinary.ResTableConfig{
+		SDKVersion: 25,
+	})
 
 	if icon == nil {
 		return nil, "", err2
