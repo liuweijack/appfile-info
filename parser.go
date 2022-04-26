@@ -193,7 +193,7 @@ func parseApkIconAndLabel(name string) (image.Image, string, error) {
 	defer pkg.Close()
 
 	icon, err2 := pkg.Icon(&androidbinary.ResTableConfig{
-		SDKVersion: 25,
+		SDKVersion: 24,
 	})
 
 	if icon == nil {
