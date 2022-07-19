@@ -196,16 +196,14 @@ func parseApkIconAndLabel(name string) (image.Image, string, error) {
 		SDKVersion: 25,
 	})
 
-	if icon == nil {
-		return nil, "", err2
-	}
-
 	label, _ := pkg.Label(&androidbinary.ResTableConfig{
 		SDKVersion: 25,
 		Country:    [2]uint8{'z', 'h'},
 		Language:   [2]uint8{'C', 'H'},
 	})
-
+	if icon == nil {
+		return label, "", err2
+	}
 	return icon, label, nil
 }
 
