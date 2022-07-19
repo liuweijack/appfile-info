@@ -202,7 +202,7 @@ func parseApkIconAndLabel(name string) (image.Image, string, error) {
 		Language:   [2]uint8{'C', 'H'},
 	})
 	if icon == nil {
-		return label, "", err2
+		return nil, label, err2
 	}
 	return icon, label, nil
 }
