@@ -194,6 +194,7 @@ func parseApkIconAndLabel(name string) (image.Image, string, error) {
 
 	icon, err2 := pkg.Icon(&androidbinary.ResTableConfig{
 		SDKVersion: 25,
+		Density:    480,
 	})
 
 	label, _ := pkg.Label(&androidbinary.ResTableConfig{
